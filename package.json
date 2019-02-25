@@ -1,0 +1,22 @@
+{
+  "name": "techdegree-project-8",
+  "version": "1.0.0",
+  "description": "Using Gulp to Build a Front End Website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enamarat/techdegree-project-8.git"
+  },
+  "author": "Marat Enaliev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/enamarat/techdegree-project-8/issues"
+  },
+  "homepage": "https://github.com/enamarat/techdegree-project-8#readme",
+  "devDependencies": {
+    "gulp": "^4.0.0"
+  }
+}
