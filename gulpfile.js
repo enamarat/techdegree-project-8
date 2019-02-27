@@ -10,9 +10,10 @@ const imageminMozjpeg = require('imagemin-mozjpeg');
 const imageminPngquant = require('imagemin-pngquant');
 const sourcemaps = require('gulp-sourcemaps');
 const del = require('del');
+const connect = require('gulp-connect');
 
 /********* JavaScript files ****************************/
-/* Concatenate separate JavaScript files, minify the output */
+/* Concatenate separate JavaScript files, minify the output*/
 gulp.task("scripts", function() {
   return gulp.src(['js/circle/autogrow.js',
   'js/circle/circle.js',
@@ -25,6 +26,16 @@ gulp.task("scripts", function() {
   .pipe(gulp.dest("dist/scripts"));
 });
 
+/*****************Local web server****************/
+// This task serves the project using a local webserver */
+gulp.task("connect", function() {
+  connect.server({
+    port:3000,
+    root: './',
+    livereload: true
+  });
+});
+
 /********* Sass files ****************************/
 /* Turn "global.scss" into CSS file, minify it */
 gulp.task("styles", function() {
@@ -34,7 +45,8 @@ gulp.task("styles", function() {
   .pipe(cleanCSS())
   .pipe(rename("all.min.css"))
   .pipe(sourcemaps.write('./'))
-  .pipe(gulp.dest("dist/styles"));
+  .pipe(gulp.dest("dist/styles"))
+  .pipe(connect.reload());
 });
 
 /********* Images ****************************/
@@ -51,7 +63,7 @@ gulp.task("images", function() {
                 [0.7 , 0.7]
             )
         ]))
-  .pipe(gulp.dest("dist/images"));
+  .pipe(gulp.dest("dist/content"));
 });
 
 /**************** Clean ***********************/
@@ -65,6 +77,11 @@ gulp.task("clean", function() {
 gulp.task("build", gulp.series("clean", "scripts", "styles", "images"));
 
 
+/**********Watch**************************/
+gulp.task("watch", function() {
+  gulp.watch("sass/*.scss", gulp.series("styles"));
+});
+
 /******************Default**************************/
 // This task runs by default */
-gulp.task("default", gulp.series("build"));
+gulp.task("default", gulp.series("build", gulp.parallel("watch", "connect")));
