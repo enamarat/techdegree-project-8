@@ -30,5 +30,7 @@
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^7.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "tar": "^4.4.8"
+  }
 }
