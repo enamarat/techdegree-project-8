@@ -4,7 +4,8 @@
   "description": "Using Gulp to Build a Front End Website",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "freshtall": "rm -rf node_modules && rm -rf package-lock.json && npm install"
   },
   "repository": {
     "type": "git",
