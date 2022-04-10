@@ -30,7 +30,7 @@
     "gulp-uglify": "^3.0.2",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^7.0.0",
-    "minimist": "^1.2.5"
+    "minimist": "^1.2.6"
   },
   "dependencies": {
     "bl": "^4.0.3",
